@@ -270,11 +270,12 @@ public class ClientController implements Initializable {
 //        String name = inetAddress.getHostName();
 //
 //        System.out.println("add: " + add + " name: " + name);
-        properties.load(new FileInputStream("./nameOfServer.properties"));//for allowing jar file to read the properties file.
+//        properties.load(new FileInputStream("./nameOfServer.properties"));//for allowing jar file to read the properties file.
 //        properties.load(getClass().getClassLoader().getResourceAsStream("sample/nameOfServer.properties"));
 //        properties.load(getClass().getResource("sample/nameOfServer.properties").toExternalForm());
-        String nameOfServer = properties.getProperty("name");
-        socket = new Socket(InetAddress.getByName(nameOfServer).getHostAddress(),2000);
+//        String nameOfServer = properties.getProperty("name");
+//        socket = new Socket(InetAddress.getByName(nameOfServer).getHostAddress(),2000);
+        socket = new Socket(InetAddress.getByName("127.0.0.1"),3333);
         ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
         return (ArrayList<Object>) objectInputStream.readObject();
     }
