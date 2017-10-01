@@ -275,7 +275,7 @@ public class ClientController implements Initializable {
 //        properties.load(getClass().getResource("sample/nameOfServer.properties").toExternalForm());
 //        String nameOfServer = properties.getProperty("name");
 //        socket = new Socket(InetAddress.getByName(nameOfServer).getHostAddress(),2000);
-        socket = new Socket(InetAddress.getByName("127.0.0.1"),3333);
+        socket = new Socket(InetAddress.getByName("192.168.1.20"),3333);
         ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
         return (ArrayList<Object>) objectInputStream.readObject();
     }
