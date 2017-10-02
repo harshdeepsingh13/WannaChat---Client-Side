@@ -271,11 +271,11 @@ public class ClientController implements Initializable {
 //
 //        System.out.println("add: " + add + " name: " + name);
 //        properties.load(new FileInputStream("./nameOfServer.properties"));//for allowing jar file to read the properties file.
-//        properties.load(getClass().getClassLoader().getResourceAsStream("sample/nameOfServer.properties"));
-//        properties.load(getClass().getResource("sample/nameOfServer.properties").toExternalForm());
-//        String nameOfServer = properties.getProperty("name");
-//        socket = new Socket(InetAddress.getByName(nameOfServer).getHostAddress(),2000);
-        socket = new Socket(InetAddress.getByName("192.168.1.20"),3333);
+        properties.load(getClass().getClassLoader().getResourceAsStream("client/nameOfServer.properties"));
+//        properties.load(getClass().getResource("/sample/nameOfServer.properties").toExternalForm());
+        String nameOfServer = properties.getProperty("name");
+        socket = new Socket(InetAddress.getByName(nameOfServer).getHostAddress(),9999);
+//        socket = new Socket(InetAddress.getByName("192.168.1.20"),9999);
         ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
         return (ArrayList<Object>) objectInputStream.readObject();
     }
