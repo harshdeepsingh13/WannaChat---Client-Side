@@ -1,4 +1,4 @@
-.idea/
-.idea/workspace.xml
-out/
-WannaChatClient.iml
+/.idea/
+/.idea/workspace.xml
+/out/
+/WannaChatClient.iml
