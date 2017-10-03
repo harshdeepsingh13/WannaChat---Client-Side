@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WannaChatClient.iml" filepath="$PROJECT_DIR$/WannaChatClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WannaChatClient/WannaChatClient.iml" filepath="$PROJECT_DIR$/WannaChatClient/WannaChatClient.iml" />
     </modules>
   </component>
 </project>
