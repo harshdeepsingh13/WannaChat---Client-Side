@@ -36,6 +36,7 @@ public class ClientController implements Initializable {
     @FXML private GridPane chatSideGridPane;
     @FXML private SplitPane mySplitPane;
     @FXML private BorderPane parentBorderPane;
+    @FXML private MenuItem aboutMenuItem;
 
     private ObservableList<TextFlow> clientsObservableList = FXCollections.observableArrayList();
     private Socket socket;
@@ -63,6 +64,7 @@ public class ClientController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
+            parentBorderPane.requestFocus();
             chatListView.setFocusTraversable(true);
             chatListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             onlineLabel1.setAlignment(Pos.CENTER);
@@ -261,34 +263,37 @@ public class ClientController implements Initializable {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        System.out.println("aboutMenuItem onAction");
+        aboutMenuItem.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/client/Wanna_Chat_logo-01.png"));
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/client/dialogStyle.css").toExternalForm());
+            alert.getDialogPane().getStyleClass().add("dialogStyle");
+            alert.setTitle("About");
+            alert.setHeaderText("About WannaChat Client");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/client/About.txt")));
+
+            StringBuffer stringBuffer = new StringBuffer();
+            String s;
+            try {
+                while((s=bufferedReader.readLine())!=null)
+                {
+                    stringBuffer.append(s);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            s = stringBuffer.toString();
+            alert.setContentText("WannaChat - Client\n" + s);
+            alert.getButtonTypes().remove(ButtonType.CANCEL);
+            alert.showAndWait();
+        });
     }
 
     private ArrayList<Object> makeConnection() throws IOException, ClassNotFoundException {
-//        InetAddress inetAddress = InetAddress.getLocalHost();
-
-//        InetAddress inetAddress = InetAddress.getByName("admin-PC");
-
-//        String add = inetAddress.getHostAddress();
-
-//        String name = inetAddress.getHostName();
-
-//
-
-//        System.out.println("add: " + add + " name: " + name);
-
-//        properties.load(new FileInputStream("./nameOfServer.properties"));//for allowing jar file to read the properties file.
-
-        properties.load(getClass().getClassLoader().getResourceAsStream("client/nameOfServer.properties"));
-
-//        properties.load(getClass().getResource("client/nameOfServer.properties"));
-
-        String nameOfServer = properties.getProperty("name");
-        System.out.println("nameOfServer: " + nameOfServer);
-
-        socket = new Socket(InetAddress.getByName(nameOfServer).getHostAddress(),2000);
-
+        socket = new Socket("localhost",2000);
         ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
-
         return (ArrayList<Object>) objectInputStream.readObject();
     }
 
