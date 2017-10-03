@@ -7,24 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="509d6806-f072-4589-a63d-1c227b0fdb66" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WannaChatClient.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/ClientController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/ClientMain$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/ClientMain.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/MyClientChattingThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/MyClientListHandlingThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/MyClientReadingThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/MyClientThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/Wanna_Chat_all-01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/Wanna_Chat_logo-01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/alertTone.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/clientgui.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/ic_account_circle_black_48dp.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WannaChatClient/client/nameOfServer.properties" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
