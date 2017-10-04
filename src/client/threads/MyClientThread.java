@@ -1,4 +1,6 @@
-package client;
+package client.threads;
+
+import client.controller.ClientController;
 
 import java.io.DataOutputStream;
 import java.io.IOException;

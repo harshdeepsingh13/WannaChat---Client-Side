@@ -1,7 +1,8 @@
-package client;/**
+package client.main;/**
  * Created by hdsingh2015 on 26-07-2017.
  */
 
+import client.controller.ClientController;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +32,7 @@ public class ClientMain extends Application {
 //        }
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("clientgui.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/client/fxml/clientgui.fxml"));
         Parent root = fxmlLoader.load();
         clientController = fxmlLoader.getController();
         System.out.println("ClientController;\t" + clientController);
@@ -39,7 +40,7 @@ public class ClientMain extends Application {
         primaryStage.setTitle("Wanna Chat!!");
         primaryStage.setScene(new Scene(root));
         primaryStage.sizeToScene();
-        primaryStage.getIcons().add(new Image("client/Wanna_Chat_logo-01.png"));
+        primaryStage.getIcons().add(new Image("client/resources/images/Wanna_Chat_logo-01.png"));
         primaryStage.setResizable(false);
         primaryStage.show();
         clientController.setMyStage(primaryStage);

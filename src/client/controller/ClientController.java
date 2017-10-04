@@ -1,5 +1,6 @@
-package client;
+package client.controller;
 
+import client.threads.MyClientThread;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +19,6 @@ import javafx.scene.text.*;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
 import java.util.*;
@@ -81,7 +81,7 @@ public class ClientController implements Initializable {
             mySplitPane.getItems().add(0,paneLabel);
             myGridPane = (GridPane) mySplitPane.getItems().remove(1);
 //            mainLogoImageView.setImage(new Image(new FileInputStream("sample\\Wanna_Chat_all-01.png")));
-            mainLogoImageView.setImage(new Image("client/Wanna_Chat_all-01.png"));
+            mainLogoImageView.setImage(new Image("client/resources/images/Wanna_Chat_all-01.png"));
             mainLogoImageView.setOpacity(0.33);
             mainLogoImageView.setPreserveRatio(true);
             mainLogoImageView.setSmooth(true);
@@ -93,8 +93,8 @@ public class ClientController implements Initializable {
             paneLogo.getChildren().add(mainLogoImageView);
 //            mainLogoImageView.set
             mySplitPane.getItems().add(1,paneLogo);
-            googleContactImage.setImage(new Image("client/ic_account_circle_black_48dp.png"));
-            logoImageView.setImage(new Image("client/Wanna_Chat_all-01.png"));
+            googleContactImage.setImage(new Image("client/resources/images/ic_account_circle_black_48dp.png"));
+            logoImageView.setImage(new Image("client/resources/images/Wanna_Chat_all-01.png"));
 //            chatSideGridPane.setVisible(false);
 
             listView.setItems(clientsObservableList);
@@ -120,7 +120,7 @@ public class ClientController implements Initializable {
                 textInputDialog.setContentText("Please enter your name (dont begin with space):");
                 textInputDialog.getDialogPane().lookupButton(ButtonType.CANCEL).setDisable(true);
                 Stage stage = (Stage) textInputDialog.getDialogPane().getScene().getWindow();
-                stage.getIcons().add(new Image("client/Wanna_Chat_logo-01.png"));
+                stage.getIcons().add(new Image("client/resources/images/Wanna_Chat_logo-01.png"));
                 Optional<String> result = textInputDialog.showAndWait();
                 System.out.println("cancel check");
 
@@ -210,7 +210,7 @@ public class ClientController implements Initializable {
                             alert.setHeaderText(null);
                             alert.setContentText("The name you entered already exists or it is incorrect, try another one.\nHint:\tYou can use alphanumeric name(or username).");
                             Stage stage1 = (Stage) alert.getDialogPane().getScene().getWindow();
-                            stage1.getIcons().add(new Image("client/Wanna_Chat_logo-01.png"));
+                            stage1.getIcons().add(new Image("client/resources/images/Wanna_Chat_logo-01.png"));
                             alert.showAndWait();
                         }
                         else
@@ -232,7 +232,7 @@ public class ClientController implements Initializable {
                             alert.setHeaderText(null);
                             alert.setContentText("The name you entered already exists or it is incorrect, try another one.\nHint:\tYou can use alphanumeric name(or username).");
                             Stage stage1 = (Stage) alert.getDialogPane().getScene().getWindow();
-                            stage1.getIcons().add(new Image("client/Wanna_Chat_logo-01.png"));
+                            stage1.getIcons().add(new Image("client/resources/images/Wanna_Chat_logo-01.png"));
                             alert.showAndWait();
                         }
                         else {
@@ -267,12 +267,12 @@ public class ClientController implements Initializable {
         System.out.println("aboutMenuItem onAction");
         aboutMenuItem.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/client/Wanna_Chat_logo-01.png"));
-            alert.getDialogPane().getStylesheets().add(getClass().getResource("/client/dialogStyle.css").toExternalForm());
+            ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/client/resources/images/Wanna_Chat_logo-01.png"));
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/client/resources/styles/dialogStyle.css").toExternalForm());
             alert.getDialogPane().getStyleClass().add("dialogStyle");
             alert.setTitle("About");
             alert.setHeaderText("About WannaChat Client");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/client/About.txt")));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/client/resources/others/About.txt")));
 
             StringBuffer stringBuffer = new StringBuffer();
             String s;
@@ -395,7 +395,7 @@ public class ClientController implements Initializable {
         ButtonType nextButton = new ButtonType("Next", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(nextButton,ButtonType.CANCEL);
         Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image("client/Wanna_Chat_logo-01.png"));
+        stage.getIcons().add(new Image("client/resources/images/Wanna_Chat_logo-01.png"));
         selectAllCheckBox = new CheckBox("Select All");
         selectAllCheckBox.setOnAction(event1 -> handleBroadcastButtonCheckClickEvent(event1));
         VBox checkBoxes = new VBox(5,selectAllCheckBox);
@@ -438,7 +438,7 @@ public class ClientController implements Initializable {
             enterMessage.setHeaderText("Enter the message you want to broadcast\t");
             enterMessage.setContentText("(Press ENTER to send the message)");
             Stage stage1 = (Stage) enterMessage.getDialogPane().getScene().getWindow();
-            stage1.getIcons().add(new Image("client/Wanna_Chat_logo-01.png"));
+            stage1.getIcons().add(new Image("client/resources/images/Wanna_Chat_logo-01.png"));
             Button changeTextToSend = (Button) enterMessage.getDialogPane().lookupButton(ButtonType.OK);
             changeTextToSend.setText("Send");
             Optional<String> resultMessage = enterMessage.showAndWait();

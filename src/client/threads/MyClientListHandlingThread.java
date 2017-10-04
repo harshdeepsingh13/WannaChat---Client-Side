@@ -1,4 +1,4 @@
-package client;
+package client.threads;
 
 
 import javafx.application.Platform;

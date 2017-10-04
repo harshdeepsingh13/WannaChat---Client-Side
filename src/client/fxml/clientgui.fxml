@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ClientController">
+<VBox xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.ClientController">
    <children>
       <MenuBar>
         <menus>
@@ -31,7 +31,7 @@
                      <graphic>
                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                              <image>
-                                 <Image url="@about.png" />
+                                 <Image url="@../resources/images/about.png" />
                              </image>
                          </ImageView>
                      </graphic>
@@ -72,7 +72,7 @@
                <children>
                   <ImageView fx:id="logoImageView" fitHeight="117.0" fitWidth="236.0" opacity="0.9" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Wanna_Chat_all-01.png" />
+                        <Image url="@../resources/images/Wanna_Chat_all-01.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="10.0" />
@@ -114,7 +114,7 @@
                            <children>
                               <ImageView fx:id="googleContactImage" fitHeight="50.0" fitWidth="49.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@ic_account_circle_black_48dp.png" />
+                                    <Image url="@../resources/images/ic_account_circle_black_48dp.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets bottom="3.0" left="2.0" right="2.0" top="2.0" />

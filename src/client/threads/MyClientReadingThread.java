@@ -1,4 +1,4 @@
-package client;
+package client.threads;
 
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -17,7 +17,7 @@ public class MyClientReadingThread extends Thread {
     private MyClientChattingThread myClientChattingThread;
     private DataInputStream dataInputStream;
     private Socket socket;
-    private AudioClip audioClip = new AudioClip(getClass().getResource("alertTone.wav").toString());
+    private AudioClip audioClip = new AudioClip(getClass().getResource("/client/resources/others/alertTone.wav").toExternalForm());
 
     public MyClientReadingThread(MyClientChattingThread myClientChattingThread) {
         super("MyClientReadingThread");
