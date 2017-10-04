@@ -39,7 +39,7 @@ public class ClientController implements Initializable {
     @FXML private GridPane chatSideGridPane;
     @FXML private SplitPane mySplitPane;
     @FXML private BorderPane parentBorderPane;
-    @FXML private MenuItem aboutMenuItem;
+    @FXML private MenuItem aboutMenuItem, logoutMenuItem;
     @FXML private StackPane parentStackPane;
 
     private ObservableList<TextFlow> clientsObservableList = FXCollections.observableArrayList();
@@ -119,8 +119,8 @@ public class ClientController implements Initializable {
 //                    flag=false;
 //                }
                 TextInputDialog textInputDialog = new TextInputDialog();
-                textInputDialog.setTitle("Text Input Dialog");
-                textInputDialog.setHeaderText("Look, a Text Input Dialog");
+                textInputDialog.setTitle("Login");
+                textInputDialog.setHeaderText("Enter your name to Login");
                 textInputDialog.setContentText("Please enter your name (dont begin with space):");
                 textInputDialog.getDialogPane().lookupButton(ButtonType.CANCEL).setDisable(true);
                 Stage stage = (Stage) textInputDialog.getDialogPane().getScene().getWindow();
@@ -264,6 +264,8 @@ public class ClientController implements Initializable {
             e.printStackTrace();
         } catch (ConnectException e)
         {
+            aboutMenuItem.setDisable(true);
+            logoutMenuItem.setDisable(true);
             Label label = new Label();
             label.setText("Server Error...");
             VBox tempContainer = new VBox(label);
@@ -309,6 +311,35 @@ public class ClientController implements Initializable {
             alert.setContentText("WannaChat - Client\n" + s);
             alert.getButtonTypes().remove(ButtonType.CANCEL);
             alert.showAndWait();
+        });
+        logoutMenuItem.setOnAction(event -> {
+            ProgressIndicator progressIndicator = new ProgressIndicator();
+            VBox progressContainer = new VBox(progressIndicator);
+            progressContainer.setAlignment(Pos.CENTER);
+            parentBorderPane.setDisable(true);
+            parentBorderPane.setStyle("-fx-opacity: 0.3");
+            parentStackPane.getChildren().add(progressContainer);
+            Thread thread = new Thread(() -> {
+                try {
+                    Thread.currentThread().sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("Stage is Closing");
+                removingClient();
+                try {
+                    Thread.currentThread().sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.exit(0);
+            });
+            thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         });
     }
 

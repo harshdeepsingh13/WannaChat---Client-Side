@@ -26,6 +26,19 @@
    <children>
       <MenuBar>
         <menus>
+            <Menu mnemonicParsing="false" text="Options">
+              <items>
+                <MenuItem fx:id="logoutMenuItem" mnemonicParsing="false" text="Logout">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/images/close.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuItem>
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" text="About">
