@@ -18,6 +18,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -40,130 +41,134 @@
           </Menu>
         </menus>
       </MenuBar>
-      <BorderPane fx:id="parentBorderPane" prefHeight="614.0" prefWidth="678.0">
-         <bottom>
-            <HBox BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="broadcastMessageButton" disable="true" mnemonicParsing="false" onAction="#broadcastButtonPressed" text="Broadcast Message" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <Region prefHeight="11.0" prefWidth="0.0" />
-                     </graphic>
-                     <HBox.margin>
-                        <Insets bottom="3.0" left="6.0" top="2.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Region prefHeight="20.0" HBox.hgrow="ALWAYS" />
-                  <Label fx:id="onlineLabel" alignment="CENTER" contentDisplay="CENTER" text="No one online" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Italic" size="13.0" />
-                     </font>
-                     <padding>
-                        <Insets right="12.0" top="4.0" />
-                     </padding>
-                  </Label>
-               </children>
-            </HBox>
-         </bottom>
-         <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fx:id="logoImageView" fitHeight="117.0" fitWidth="236.0" opacity="0.9" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/images/Wanna_Chat_all-01.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS" />
-                  <Label fx:id="nameLabel" maxHeight="1.7976931348623157E308">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </Label>
-               </children>
-            </HBox>
-         </top>
-         <left>
-            <SplitPane fx:id="mySplitPane" dividerPositions="0.15485564304461943" BorderPane.alignment="CENTER">
-               <items>
-                  <AnchorPane maxWidth="150.0" minWidth="150.0">
+      <StackPane fx:id="parentStackPane">
+         <children>
+            <BorderPane fx:id="parentBorderPane" prefHeight="614.0" prefWidth="678.0">
+               <bottom>
+                  <HBox BorderPane.alignment="CENTER">
                      <children>
-                        <ListView fx:id="listView" onMouseClicked="#clientsListItemClicked" prefHeight="465.0" prefWidth="248.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="broadcastMessageButton" disable="true" mnemonicParsing="false" onAction="#broadcastButtonPressed" text="Broadcast Message" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <Region prefHeight="11.0" prefWidth="0.0" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets bottom="3.0" left="6.0" top="2.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Region prefHeight="20.0" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="onlineLabel" alignment="CENTER" contentDisplay="CENTER" text="No one online" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Italic" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets right="12.0" top="4.0" />
+                           </padding>
+                        </Label>
                      </children>
-                  </AnchorPane>
-                  <GridPane fx:id="chatSideGridPane">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="ALWAYS" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="42.0" prefHeight="54.0" />
-                        <RowConstraints maxHeight="347.0" minHeight="340.0" prefHeight="340.0" vgrow="ALWAYS" />
-                        <RowConstraints vgrow="ALWAYS" />
-                        <RowConstraints />
-                     </rowConstraints>
+                  </HBox>
+               </bottom>
+               <top>
+                  <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <ListView fx:id="chatListView" focusTraversable="false" GridPane.rowIndex="1" />
-                        <HBox prefHeight="0.0" prefWidth="556.0">
+                        <ImageView fx:id="logoImageView" fitHeight="117.0" fitWidth="236.0" opacity="0.9" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/images/Wanna_Chat_all-01.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="nameLabel" maxHeight="1.7976931348623157E308">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </top>
+               <left>
+                  <SplitPane fx:id="mySplitPane" dividerPositions="0.15485564304461943" BorderPane.alignment="CENTER">
+                     <items>
+                        <AnchorPane maxWidth="150.0" minWidth="150.0">
                            <children>
-                              <ImageView fx:id="googleContactImage" fitHeight="50.0" fitWidth="49.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../resources/images/ic_account_circle_black_48dp.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets bottom="3.0" left="2.0" right="2.0" top="2.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                              <Label fx:id="nameInChat" text="Label">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" top="4.0" />
-                                 </HBox.margin>
-                              </Label>
+                              <ListView fx:id="listView" onMouseClicked="#clientsListItemClicked" prefHeight="465.0" prefWidth="248.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
-                        </HBox>
-                        <VBox GridPane.rowIndex="2">
+                        </AnchorPane>
+                        <GridPane fx:id="chatSideGridPane">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="ALWAYS" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="42.0" prefHeight="54.0" />
+                              <RowConstraints maxHeight="347.0" minHeight="340.0" prefHeight="340.0" vgrow="ALWAYS" />
+                              <RowConstraints vgrow="ALWAYS" />
+                              <RowConstraints />
+                           </rowConstraints>
                            <children>
-                              <HBox alignment="CENTER" focusTraversable="true" spacing="5.0">
+                              <ListView fx:id="chatListView" focusTraversable="false" GridPane.rowIndex="1" />
+                              <HBox prefHeight="0.0" prefWidth="556.0">
                                  <children>
-                                    <TextArea fx:id="messageTextArea" onKeyPressed="#messageTextAreaKeyPressed" prefHeight="58.0" prefWidth="556.0" promptText="Enter your messae." HBox.hgrow="ALWAYS">
+                                    <ImageView fx:id="googleContactImage" fitHeight="50.0" fitWidth="49.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/ic_account_circle_black_48dp.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets bottom="3.0" left="2.0" right="2.0" top="2.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Label fx:id="nameInChat" text="Label">
                                        <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </TextArea>
-                                    <Button fx:id="sendButton" minWidth="60.0" mnemonicParsing="false" onAction="#sendButtonClickedListener" text="Send">
-                                       <font>
-                                          <Font name="System Italic" size="13.0" />
+                                          <Font size="30.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets right="5.0" />
+                                          <Insets left="10.0" top="4.0" />
                                        </HBox.margin>
-                                    </Button>
+                                    </Label>
                                  </children>
                               </HBox>
-                              <Label text="Press ctrl+enter to send the message." textFill="#5e5858">
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </Label>
+                              <VBox GridPane.rowIndex="2">
+                                 <children>
+                                    <HBox alignment="CENTER" focusTraversable="true" spacing="5.0">
+                                       <children>
+                                          <TextArea fx:id="messageTextArea" onKeyPressed="#messageTextAreaKeyPressed" prefHeight="58.0" prefWidth="556.0" promptText="Enter your messae." HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </TextArea>
+                                          <Button fx:id="sendButton" minWidth="60.0" mnemonicParsing="false" onAction="#sendButtonClickedListener" text="Send">
+                                             <font>
+                                                <Font name="System Italic" size="13.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <Label text="Press ctrl+enter to send the message." textFill="#5e5858">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
                            </children>
-                        </VBox>
-                     </children>
-                  </GridPane>
-               </items>
-               <BorderPane.margin>
-                  <Insets top="0.4" />
-               </BorderPane.margin>
-            </SplitPane>
-         </left>
-      </BorderPane>
+                        </GridPane>
+                     </items>
+                     <BorderPane.margin>
+                        <Insets top="0.4" />
+                     </BorderPane.margin>
+                  </SplitPane>
+               </left>
+            </BorderPane>
+         </children>
+      </StackPane>
    </children>
 </VBox>

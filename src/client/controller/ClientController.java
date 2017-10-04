@@ -1,6 +1,7 @@
 package client.controller;
 
 import client.threads.MyClientThread;
+import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,8 +18,10 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.*;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.net.URL;
 import java.util.*;
@@ -37,6 +40,7 @@ public class ClientController implements Initializable {
     @FXML private SplitPane mySplitPane;
     @FXML private BorderPane parentBorderPane;
     @FXML private MenuItem aboutMenuItem;
+    @FXML private StackPane parentStackPane;
 
     private ObservableList<TextFlow> clientsObservableList = FXCollections.observableArrayList();
     private Socket socket;
@@ -258,6 +262,23 @@ public class ClientController implements Initializable {
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (ConnectException e)
+        {
+            Label label = new Label();
+            label.setText("Server Error...");
+            VBox tempContainer = new VBox(label);
+            tempContainer.setAlignment(Pos.CENTER);
+            label.setStyle("-fx-font-size: 35px; -fx-font-weight: bold; -fx-text-fill: RED;");
+            parentBorderPane.setDisable(true);
+            parentBorderPane.setStyle("-fx-opacity: 0.3");
+            parentStackPane.getChildren().add(tempContainer);
+            PauseTransition pauseTransition = new PauseTransition(Duration.seconds(4));
+            pauseTransition.play();
+            pauseTransition.setOnFinished(event1 ->{
+                System.exit(0);
+                    }
+            );
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -291,7 +312,7 @@ public class ClientController implements Initializable {
         });
     }
 
-    private ArrayList<Object> makeConnection() throws IOException, ClassNotFoundException {
+    private ArrayList<Object> makeConnection() throws ClassNotFoundException, IOException, ConnectException {
         socket = new Socket("localhost",2000);
         ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
         return (ArrayList<Object>) objectInputStream.readObject();
