@@ -28,20 +28,15 @@ public class MyClientListHandlingThread extends Thread{
 
     @Override
     public void run() {
-//        super.run();
         while(!exitThis) {
             Boolean sendingMessageInfo = false;
             try {
                 ObjectInputStream inputStream = new ObjectInputStream(myClientThread.getClientController().getSocket().getInputStream());
-
-//                nameMapFromServer = (Map<Integer, String>) inputStream.readObject();
                 allDataArrayListFromServer = (ArrayList<Object>) inputStream.readObject();
                 nameMapFromServer = (Map<Integer, String>) allDataArrayListFromServer.get(0);
-
                 lastClosedClientIndex = (Integer) allDataArrayListFromServer.get(1);
                 System.out.println("lastClosedClientIndex: " + lastClosedClientIndex);
                 sendingMessageInfo = (Boolean) allDataArrayListFromServer.get(2);
-//                inputStream.close();
                 System.out.println("Got Map From server: " + nameMapFromServer + " sendingMessageInfo: " + sendingMessageInfo);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -66,7 +61,6 @@ public class MyClientListHandlingThread extends Thread{
 
                     }
                 }
-
                 for (Map.Entry<Integer, String> myMap : nameMapFromServer.entrySet()) {
                     String name = myMap.getValue();
                     if (!name.equalsIgnoreCase(myClientThread.getClientController().getNameOfTheUser())) {

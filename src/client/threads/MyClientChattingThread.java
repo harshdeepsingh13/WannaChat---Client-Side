@@ -44,8 +44,6 @@ public class MyClientChattingThread extends Thread{
 
     @Override
     public void run() {
-//        super.run();
-
         myClientReadingThread = new MyClientReadingThread(this);
         myClientReadingThread.start();
     }
@@ -87,25 +85,6 @@ public class MyClientChattingThread extends Thread{
     }
     public void messageSendingToServer(String recipient, String message)
     {
-//        String myRecipients = "";
-//        System.out.println("recipients: " + recipients);
-//        for(String s:recipients)
-//        {
-//            myRecipients = myRecipients + s + " ";
-//            if(myMap.containsValue(s))
-//            {
-//                Integer in = getKeyUsingValue(s,myMap);
-//                System.out.println("key: " + in);
-//                TextFlow tf = new TextFlow();
-//                Text t1 = new Text("You" + ":\t");
-//                t1.setStyle("-fx-font-weight: bold");
-//                Text t2 = new Text(message);
-//                tf.getChildren().addAll(t1,t2);
-//
-//                ObservableList<TextFlow> o = myClientThread.getClientController().getChatsMap().get(in);
-//                o.add(tf);
-//            }
-//        }
         Integer in = getKeyUsingValue(recipient,myClientThread.getMyClientListHandlingThread().provideNameMapToBroadcastButton());
         System.out.println("key: " + in);
         TextFlow tf = new TextFlow();
@@ -122,8 +101,6 @@ public class MyClientChattingThread extends Thread{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     private Integer getKeyUsingValue(String s, Map<Integer, String> myMap) {

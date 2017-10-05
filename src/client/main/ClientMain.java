@@ -24,19 +24,10 @@ public class ClientMain extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         System.out.println("ClientMain Started");
-//        Parent root = null;
-//        try {
-//            root = FXMLLoader.load(getClass().getResource("ClientGUI.fxml"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/client/fxml/clientgui.fxml"));
         Parent root = fxmlLoader.load();
         clientController = fxmlLoader.getController();
         System.out.println("ClientController;\t" + clientController);
-
         primaryStage.setTitle("Wanna Chat!!");
         primaryStage.setScene(new Scene(root));
         primaryStage.sizeToScene();
@@ -51,14 +42,5 @@ public class ClientMain extends Application {
                 clientController.removingClient();
             }
         });
-
-
     }
-
-//    @Override
-//    public void stop() throws Exception {
-////        super.stop();
-//        System.out.println("Stage is stopping");
-//        clientController.removingClient();
-//    }
 }

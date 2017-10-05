@@ -84,7 +84,6 @@ public class ClientController implements Initializable {
             mySplitPane.prefWidthProperty().bind(parentBorderPane.prefWidthProperty());
             mySplitPane.getItems().add(0,paneLabel);
             myGridPane = (GridPane) mySplitPane.getItems().remove(1);
-//            mainLogoImageView.setImage(new Image(new FileInputStream("sample\\Wanna_Chat_all-01.png")));
             mainLogoImageView.setImage(new Image("client/resources/images/Wanna_Chat_all-01.png"));
             mainLogoImageView.setOpacity(0.33);
             mainLogoImageView.setPreserveRatio(true);
@@ -95,29 +94,15 @@ public class ClientController implements Initializable {
             mainLogoImageView.setLayoutY(35.0);
             mainLogoImageView.setPickOnBounds(true);
             paneLogo.getChildren().add(mainLogoImageView);
-//            mainLogoImageView.set
             mySplitPane.getItems().add(1,paneLogo);
             googleContactImage.setImage(new Image("client/resources/images/ic_account_circle_black_48dp.png"));
             logoImageView.setImage(new Image("client/resources/images/Wanna_Chat_all-01.png"));
-//            chatSideGridPane.setVisible(false);
-
             listView.setItems(clientsObservableList);
             if(FXCollections.observableArrayList() == listView.getItems()) System.out.println("clientsObservableList is true.");
             else System.out.println("false");
             broadcastMessageButton.setDisable(true);
             boolean flag=true;
-
             while(true){
-//                if(flag)
-//                {
-//                    ArrayList<Object> arrayListFromServer = makeConnection();
-//                    namesMapFromServer = (Map<Integer, String>) arrayListFromServer.get(0);
-//                    myIndexOnServer = (int) arrayListFromServer.get(1);
-//                    System.out.println("myIndexOnServer: " + myIndexOnServer);
-////                    ObservableList<TextFlow> tempObservableList = FXCollections.observableArrayList();
-////                    chatsMap.put(myIndexOnServer,tempObservableList);
-//                    flag=false;
-//                }
                 TextInputDialog textInputDialog = new TextInputDialog();
                 textInputDialog.setTitle("Login");
                 textInputDialog.setHeaderText("Enter your name to Login");
@@ -127,78 +112,14 @@ public class ClientController implements Initializable {
                 stage.getIcons().add(new Image("client/resources/images/Wanna_Chat_logo-01.png"));
                 Optional<String> result = textInputDialog.showAndWait();
                 System.out.println("cancel check");
-
                 if(flag)
                 {
                     ArrayList<Object> arrayListFromServer = makeConnection();
                     namesMapFromServer = (Map<Integer, String>) arrayListFromServer.get(0);
                     myIndexOnServer = (int) arrayListFromServer.get(1);
                     System.out.println("myIndexOnServer: " + myIndexOnServer);
-//                    ObservableList<TextFlow> tempObservableList = FXCollections.observableArrayList();
-//                    chatsMap.put(myIndexOnServer,tempObservableList);
                     flag=false;
                 }
-
-//                if(!namesMapFromServer.isEmpty())
-//                {
-//                    if(result.isPresent())
-//                    {
-//                        nameOfTheUser = result.get();
-//                        Character ch = nameOfTheUser.charAt(0);
-//                        System.out.println("ch: " + ch);
-//                        if(namesMapFromServer.containsValue(nameOfTheUser) || Character.isWhitespace(ch))
-//                        {
-//                            Alert alert = new Alert(Alert.AlertType.ERROR);
-//                            alert.setTitle("Name already exists");
-//                            alert.setHeaderText(null);
-//                            alert.setContentText("The name you entered already exists or it is incorrect, try another one.\nHint:\tYou can use alphanumeric name(or username).");
-//                            Stage stage1 = (Stage) alert.getDialogPane().getScene().getWindow();
-//                            stage1.getIcons().add(new Image("sample/Wanna_Chat_logo-01.png"));
-//                            alert.showAndWait();
-//                        }
-//                        else
-//                        {
-//                            nameLabel.setText("Hello, " + nameOfTheUser + "!!\t");
-//                            giveNametoServer = true;
-//                            break;
-//                        }
-//                    }
-//                    else{
-//                        DataOutputStream d = new DataOutputStream(socket.getOutputStream());
-//                        d.writeUTF("1 " + myIndexOnServer); d.flush();
-//                        System.exit(0);
-//                    }
-//                }
-//                else
-//                {
-//                    if (result.isPresent()) {
-//                        nameOfTheUser = result.get();
-//                        Character ch = nameOfTheUser.charAt(0);
-//                        System.out.println("ch: " + ch);
-//                        if(Character.isWhitespace(ch))
-//                        {
-//                            Alert alert = new Alert(Alert.AlertType.ERROR);
-//                            alert.setTitle("Name already exists");
-//                            alert.setHeaderText(null);
-//                            alert.setContentText("The name you entered already exists or it is incorrect, try another one.\nHint:\tYou can use alphanumeric name(or username).");
-//                            Stage stage1 = (Stage) alert.getDialogPane().getScene().getWindow();
-//                            stage1.getIcons().add(new Image("sample/Wanna_Chat_logo-01.png"));
-//                            alert.showAndWait();
-//                        }
-//                        else {
-//                            nameOfTheUser = result.get();
-//                            nameLabel.setText("Hello, " + nameOfTheUser + "!!\t");
-//                            giveNametoServer = true;
-//                            break;
-//                        }
-//                    }
-//                    else{
-//                        DataOutputStream d = new DataOutputStream(socket.getOutputStream());
-//                        d.writeUTF("1 " + myIndexOnServer); d.flush();
-//                        System.exit(0);
-//                    }
-//                }
-
                 if(result.isPresent())
                 {
                     System.out.println("Okay");
@@ -256,10 +177,8 @@ public class ClientController implements Initializable {
                 }
 
             }
-
             myClientThread = new MyClientThread(this);
             myClientThread.start();
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (ConnectException e)
@@ -423,21 +342,6 @@ public class ClientController implements Initializable {
         }
 
     }
-
-//    public void clientsListHandler(MouseEvent mouseEvent) {
-//        System.out.println("Event triggered.");
-//        if(mouseEvent.getClickCount()==2)
-//        {
-//            String  nameClicked = (String) listView.getSelectionModel().getSelectedItem();
-//            System.out.println("Mouse clicked twice at: " + nameClicked);
-//            if (nameClicked != null) {
-//                nameInChat.setText(nameClicked);
-//                Map<Integer,String> map = myClientThread.getMyClientListHandlingThread().getNameMapFromServer();
-//                chatListView.setItems(chatsMap.get(getKeyUsingValue(nameClicked,map)));
-//            }
-//        }
-//    }
-
     public void broadcastButtonPressed(ActionEvent event) {
         System.out.println("Event triggered: " + event);
         //for custom dialog box https://youtu.be/BweQ7SCNRBA
@@ -516,10 +420,6 @@ public class ClientController implements Initializable {
                 i.setDisable(true);
             }
         }
-//        else if(!selectAllCheckBox.isSelected())
-//        {
-//
-//        }
         else
         {
             for(CheckBox i:allClientsAvailable)
@@ -538,7 +438,6 @@ public class ClientController implements Initializable {
                     if(choices.contains(i.getText())) choices.remove(i.getText());
                 }
             }
-
         }
     }
 
@@ -567,8 +466,6 @@ public class ClientController implements Initializable {
         return myIndex;
     }
 
-
-
     public void clientsListItemClicked(MouseEvent mouseEvent) {
         System.out.println("Event triggered.");
         if(mouseEvent.getClickCount()==2)
@@ -587,8 +484,6 @@ public class ClientController implements Initializable {
                 TextFlow tempTextFlow = (TextFlow) listView.getSelectionModel().getSelectedItem();
                 int tempIndex = listView.getSelectionModel().getSelectedIndex();
                 System.out.println("tempIndex: " + tempIndex);
-//                tempTextFlow.setStyle("-fx-font-weight: normal");
-//                tempTextFlow.setStyle("-fx-font-color: black");
                 Text tempText = (Text) tempTextFlow.getChildren().get(0);
                 tempText.setStyle("-fx-font-weight: normal");
                 tempText.setFill(Color.BLACK);
@@ -609,15 +504,6 @@ public class ClientController implements Initializable {
             String message = messageTextArea.getText();
             message = message.trim();
             Integer indexOfRecipient = null;
-//            Integer tempIndex1 = getKeyUsingValue(chatListView.getItem(),chatsMap);
-//            Integer tempIndex2 = getKeyUsingValue((String)listView.getSelectionModel().getSelectedItem(),myClientThread.getMyClientListHandlingThread().provideNameMapToBroadcastButton());
-//            if(tempIndex1 == tempIndex2)
-//                indexOfRecipient = tempIndex1;
-//            else indexOfRecipient = tempIndex1;
-//            ObservableList temp = (ObservableList) listView.getSelectionModel().getSelectedItem();
-//            System.out.println("temp: " + temp);
-//            indexOfRecipient = listView.getSelectionModel().getSelectedIndex();
-//            System.out.println("indexOfRecipient: " + indexOfRecipient);
             indexOfRecipient= getKeyUsingValue(getStringFromTextFlow((TextFlow) listView.getSelectionModel().getSelectedItem()),myClientThread.getMyClientListHandlingThread().provideNameMapToBroadcastButton());
             System.out.println("indexOfRecipient: " + indexOfRecipient);
             String nameOfTheRecipient = myClientThread.getMyClientListHandlingThread().provideNameMapToBroadcastButton().get(indexOfRecipient);
@@ -651,7 +537,6 @@ public class ClientController implements Initializable {
     {
         System.out.println("setMySplitPaneBack: " + mySplitPane.getItems().get(0));
         if(mySplitPane.getItems().get(0).equals(paneLabel)) {
-//        if(mySplitPane.getItems().contains(paneLabel)){
             System.out.println("setMySplitPaneBack " + " true .");
             mySplitPane.getItems().remove(0);
             mySplitPane.getItems().add(0, myAnchorPane);

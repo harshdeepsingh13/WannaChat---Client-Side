@@ -28,19 +28,6 @@ public class MyClientReadingThread extends Thread {
 
     @Override
     public void run() {
-//        super.run();
-        while(true) {
-            //                byte messageInfoByte[] = new byte[10000];
-//                dataInputStream.read(messageInfoByte);
-//                String messageInfo = new String(messageInfoByte);
-//                System.out.println(messageInfo);
-//            String messageInfo="";
-//                if(dataInputStream.readBoolean())
-//                {
-//                    messageInfo = dataInputStream.readUTF();
-////
-
-        }
     }
 
     public void gotMessage(int sendersIndex, String message)
@@ -55,10 +42,8 @@ public class MyClientReadingThread extends Thread {
         System.out.println("sendersIndex:" + myClientChattingThread.getMyClientThread().getClientController().getChatsMap().get(sendersIndex));
         ObservableList<TextFlow>tempObservableList = myClientChattingThread.getMyClientThread().getClientController().getChatsMap().get(sendersIndex);
         Platform.runLater(() -> myClientChattingThread.getMyClientThread().getClientController().getListView().requestFocus());
-//        myClientChattingThread.getMyClientThread().getClientController().getListView().requestFocus();
         if(myClientChattingThread.getMyClientThread().getClientController().getListView().getSelectionModel().getSelectedItem() != sendersName)
         {
-//            int tempIndex = myClientChattingThread.getMyClientThread().getClientController().getListView().getItems().indexOf(new TextFlow(new Text(sendersName)));
             int tempIndex = listViewTextFlowObservableListContainsValue(sendersName);
             System.out.println("tempIndex: " + tempIndex);
             Platform.runLater(() -> {
@@ -68,7 +53,6 @@ public class MyClientReadingThread extends Thread {
                 System.out.println("Hey: Hey: " + tempTextFlow.getChildren().get(0));
                 Text newText = new Text(sendersName);
                 newText.setStyle("-fx-font-weight: bold");
-//                newText.setStyle("-fx-font-color: crimson");
                 newText.setFill(Color.RED);
                 tempTextFlow.getChildren().remove(0);
                 tempTextFlow.getChildren().add(0,newText);
@@ -82,16 +66,8 @@ public class MyClientReadingThread extends Thread {
                 audioClip.play(1.0);
                 myClientChattingThread.getMyClientThread().getClientController().getMyStage().requestFocus();
             });
-//            myClientChattingThread.getMyClientThread().getClientController().getListView().getFocusModel().focus(sendersIndex);
         }
         Platform.runLater(() -> tempObservableList.add(tf));
-
-//        String name = myClientChattingThread.getMyClientThread().getMyClientListHandlingThread().provideNameMapToBroadcastButton().get(sendersIndex);
-
-
-
-
-
     }
 
     private int listViewTextFlowObservableListContainsValue(String sendersName) {
