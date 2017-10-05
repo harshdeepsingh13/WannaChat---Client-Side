@@ -150,7 +150,7 @@
                                  <children>
                                     <HBox alignment="CENTER" focusTraversable="true" spacing="5.0">
                                        <children>
-                                          <TextArea fx:id="messageTextArea" onKeyPressed="#messageTextAreaKeyPressed" prefHeight="58.0" prefWidth="556.0" promptText="Enter your messae." HBox.hgrow="ALWAYS">
+                                          <TextArea fx:id="messageTextArea" onKeyReleased="#messageTextAreaKeyPressed" prefHeight="58.0" prefWidth="556.0" promptText="Enter your messae." HBox.hgrow="ALWAYS">
                                              <font>
                                                 <Font size="13.0" />
                                              </font>
@@ -165,7 +165,7 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <Label text="Press ctrl+enter to send the message." textFill="#5e5858">
+                                    <Label text="Press ENTER to send the message." textFill="#5e5858">
                                        <VBox.margin>
                                           <Insets bottom="5.0" top="5.0" />
                                        </VBox.margin>

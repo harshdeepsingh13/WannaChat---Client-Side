@@ -53,7 +53,7 @@ public class ClientController implements Initializable {
     private CheckBox[] allClientsAvailable;
     private Set<String> choices = new HashSet<>();
     private Map<Integer,ObservableList<TextFlow>> chatsMap = new HashMap<>();
-    private KeyCombination keyCombCrtlEnter = new KeyCodeCombination(KeyCode.ENTER,KeyCombination.CONTROL_DOWN);
+    private KeyCombination keyCombCrtlEnter = new KeyCodeCombination(KeyCode.ENTER);
     private Label onlineLabel1 = new Label("No one online.");
     private AnchorPane myAnchorPane;
     private GridPane myGridPane;
@@ -644,6 +644,7 @@ public class ClientController implements Initializable {
         if(keyCombCrtlEnter.match(keyEvent))
         {
             sendButton.fire();
+            messageTextArea.setText("");
         }
     }
     public void setMySplitPaneBack()
